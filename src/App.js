@@ -10,6 +10,8 @@ function App() {
     'The quick brown fox jumps over the lazy dog.'
   ); // default text
   const [textCase, setTextCase] = useState('default');
+  const [lineHeight, setLineHeight] = useState(1.2);
+  const [letterSpacing, setLetterSpacing] = useState(0);
 
   useEffect(() => {
     // fetch fonts from Google Fonts API using environment variable for API key
@@ -43,25 +45,33 @@ function App() {
     setTextCase(event.target.value);
   };
 
+  const handleLineHeightChange = (event) => {
+    setLineHeight(parseFloat(event.target.value));
+  };
+
+  const handleLetterSpacingChange = (event) => {
+    setLetterSpacing(parseFloat(event.target.value));
+  };
+
   let displayText = text;
 
   switch (textCase) {
-    case "default":
+    case 'default':
       displayText = text;
       break;
-    case "capitalize":
+    case 'capitalize':
       displayText = text
         .toLowerCase()
-        .split(" ")
+        .split(' ')
         .map((word) => {
           return word.charAt(0).toUpperCase() + word.slice(1);
         })
-        .join(" ");
+        .join(' ');
       break;
-    case "uppercase":
+    case 'uppercase':
       displayText = text.toUpperCase();
       break;
-    case "lowercase":
+    case 'lowercase':
       displayText = text.toLowerCase();
       break;
     default:
@@ -87,6 +97,8 @@ function App() {
           color: color,
           height: '50%',
           width: '75%',
+          lineHeight: lineHeight,
+          letterSpacing: `${letterSpacing}px`,
         }}
         value={displayText}
         onChange={handleTextChange}
@@ -144,6 +156,32 @@ function App() {
           <option value="uppercase">Uppercase</option>
           <option value="lowercase">Lowercase</option>
         </select>
+      </div>
+      <div>
+        <label htmlFor="line-height-slider">Line Height:</label>
+        <input
+          id="line-height-slider"
+          type="range"
+          min="1"
+          max="3"
+          step="0.1"
+          value={lineHeight}
+          onChange={handleLineHeightChange}
+        />
+        <span>{lineHeight.toFixed(1)}</span>
+      </div>
+      <div>
+        <label htmlFor="letter-spacing-slider">Letter Spacing:</label>
+        <input
+          id="letter-spacing-slider"
+          type="range"
+          min="-1"
+          max="1"
+          step="0.1"
+          value={letterSpacing}
+          onChange={handleLetterSpacingChange}
+        />
+        <span>{letterSpacing.toFixed(1)}</span>
       </div>
     </div>
   );
