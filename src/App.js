@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WebFont from 'webfontloader';
+import './App.css';
 
 function App() {
   const [fontSize, setFontSize] = useState(16); // default font size is 16px
@@ -12,6 +13,7 @@ function App() {
   const [textCase, setTextCase] = useState('default');
   const [lineHeight, setLineHeight] = useState(1.2);
   const [letterSpacing, setLetterSpacing] = useState(0);
+  const dropDownClass = "bg-gray-800 text-white px-4 py-2 rounded-lg shadow-md border border-gray-700 flex justify-between items-center cursor-pointer w-48 transition duration-300 ease-in-out"
 
   useEffect(() => {
     // fetch fonts from Google Fonts API using environment variable for API key
@@ -104,7 +106,7 @@ function App() {
         onChange={handleTextChange}
       />
       <div>
-        <label htmlFor="font-size-slider">Font Size:</label>
+        <label htmlFor="font-size-slider">Font Size:</label><br/>
         <input
           type="range"
           id="font-size-slider"
@@ -113,18 +115,27 @@ function App() {
           max="72"
           value={fontSize}
           onChange={handleFontSizeChange}
+          className="appearance-none w-3/4 h-3 bg-gray-200 rounded-md outline-none cursor-pointer"
+          style={{
+            "--range-color": "#4F46E5",
+            "--thumb-color": "#4F46E5",
+            "--thumb-color-hover": "#1D1D1D",
+          }}
         />
         <span style={{ marginLeft: '10px' }}>
           Current Font Size: {fontSize}px
         </span>
       </div>
       <div>
-        <label htmlFor="font-family-dropdown">Font Family:</label>
+      <br/>
+      
+        <label htmlFor="font-family-dropdown">Font Family:</label><br/>
         <select
           id="font-family-dropdown"
           name="font-family-dropdown"
           value={fontFamily}
           onChange={handleFontFamilyChange}
+          className={dropDownClass}
         >
           {fonts.map((font) => (
             <option key={font} value={font}>
@@ -133,23 +144,27 @@ function App() {
           ))}
         </select>
       </div>
+      <br/>
       <div>
-        <label htmlFor="color-picker">Color:</label>
+        <label htmlFor="color-picker">Select Text Color:</label><br/>
         <input
           type="color"
           id="color-picker"
           name="color-picker"
           value={color}
           onChange={handleColorChange}
+          className="bg-gray-800 text-white px-4 py-2 rounded-lg shadow-md border border-gray-700 flex justify-between items-center cursor-pointer w-48 transition duration-300 ease-in-out"
         />
       </div>
+      <br/>
       <div>
-        <label htmlFor="text-case-dropdown">Text Case:</label>
+        <label htmlFor="text-case-dropdown">Text Case:</label><br/>
         <select
           id="text-case-dropdown"
           name="text-case-dropdown"
           value={textCase}
           onChange={handleTextCaseChange}
+          className={dropDownClass}
         >
           <option value="default">Default</option>
           <option value="capitalize">Capitalize</option>
@@ -157,8 +172,9 @@ function App() {
           <option value="lowercase">Lowercase</option>
         </select>
       </div>
+      <br/>
       <div>
-        <label htmlFor="line-height-slider">Line Height:</label>
+        <label htmlFor="line-height-slider">Line Height:</label><br/>
         <input
           id="line-height-slider"
           type="range"
@@ -167,11 +183,18 @@ function App() {
           step="0.1"
           value={lineHeight}
           onChange={handleLineHeightChange}
+          className="appearance-none w-3/4 h-3 bg-gray-200 rounded-md outline-none cursor-pointer"
+          style={{
+            "--range-color": "#4F46E5",
+            "--thumb-color": "#4F46E5",
+            "--thumb-color-hover": "#1D1D1D",
+          }}
         />
         <span>{lineHeight.toFixed(1)}</span>
       </div>
+      <br/>
       <div>
-        <label htmlFor="letter-spacing-slider">Letter Spacing:</label>
+        <label htmlFor="letter-spacing-slider">Letter Spacing:</label><br/>
         <input
           id="letter-spacing-slider"
           type="range"
@@ -180,6 +203,12 @@ function App() {
           step="0.1"
           value={letterSpacing}
           onChange={handleLetterSpacingChange}
+          className="appearance-none w-3/4 h-3 bg-gray-200 rounded-md outline-none cursor-pointer"
+          style={{
+            "--range-color": "#4F46E5",
+            "--thumb-color": "#4F46E5",
+            "--thumb-color-hover": "#1D1D1D",
+          }}
         />
         <span>{letterSpacing.toFixed(1)}</span>
       </div>
