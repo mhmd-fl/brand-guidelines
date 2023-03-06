@@ -91,7 +91,7 @@ function App() {
   }, [fontFamily]);
 
   return (
-    <div>
+    <div className='flex flex-col items-center justify-center h-screen'>
       <textarea
         style={{
           fontSize: `${fontSize}px`,
@@ -102,6 +102,7 @@ function App() {
           lineHeight: lineHeight,
           letterSpacing: `${letterSpacing}px`,
         }}
+        className="p-4 border-2 border-gray-300"
         value={displayText}
         onChange={handleTextChange}
       />
@@ -121,13 +122,13 @@ function App() {
             "--thumb-color": "#4F46E5",
             "--thumb-color-hover": "#1D1D1D",
           }}
-        />
-        <span style={{ marginLeft: '10px' }}>
+        /><br/>
+        <span>
           Current Font Size: {fontSize}px
         </span>
       </div>
-      <div>
       <br/>
+      <div>
       
         <label htmlFor="font-family-dropdown">Font Family:</label><br/>
         <select
