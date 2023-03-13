@@ -1,0 +1,11 @@
+/* Layout Styles */
+.layout {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    margin-left: 250px; /* Adjust this value to match the width of your sidebar */
+  }
+  
